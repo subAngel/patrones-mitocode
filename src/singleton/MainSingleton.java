@@ -1,5 +1,7 @@
 package singleton;
 
+import singleton.conection.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
