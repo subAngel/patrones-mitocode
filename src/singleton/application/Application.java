@@ -5,16 +5,18 @@ import singleton.conection.Conexion;
 import java.sql.*;
 
 public class Application {
+
+    private static final Conexion con = Conexion.getConexion();
+
     public Application(){
     }
-    public Connection conectar(){
-        Connection conn = Conexion.getConexion("jdbc:mysql://localhost:3306/samplesingleton", "root", "admin");
-        return conn;
-    }
+
+
+
     public void visualizar(){
         try {
             String query = "SELECT * FROM tabla;";
-            PreparedStatement pst = conectar().prepareStatement(query);
+            PreparedStatement pst = con.getCnn().prepareStatement(query);
             ResultSet rs = pst.executeQuery();
 
             System.out.println("---------------------------------------------------------------");
@@ -29,7 +31,8 @@ public class Application {
                         rs.getString(4) );
             }
             System.out.println("---------------------------------------------------------------");
-            System.out.printf("\t\t\t\t\t\t TOTAL: %6s", calcularTotal());
+
+            System.out.printf("\t\t\t\t\t\t\t\t\t\t\t\t TOTAL: %6s", calcularTotal());
         } catch (SQLException ex){
 //            ex.printStackTrace();
             System.err.println("Error al visualizar los datos");
@@ -37,14 +40,18 @@ public class Application {
         }
 
     }
-    private String calcularTotal(){
-        String query = "select sum(cantidad*precio) from tabla;";
+    public String calcularTotal(){
         try {
-            PreparedStatement pst = conectar().prepareStatement(query);
+            String sql = "SELECT SUM(cantidad*precio) AS total FROM tabla;";
+            PreparedStatement pst = con.getCnn().prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            return rs.getString(1);
+            if(rs.next()){
+                return rs.getString(1);
+            }
+            System.out.println(rs.getString(1));
+            return "Null";
         }catch (SQLException exception){
-//            exception.printStackTrace();
+            exception.printStackTrace();
             return "Error";
         }
     }
