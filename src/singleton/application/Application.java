@@ -32,7 +32,7 @@ public class Application {
             }
             System.out.println("---------------------------------------------------------------");
 
-            System.out.printf("\t\t\t\t\t\t\t\t\t\t\t\t TOTAL: %6s", calcularTotal());
+            System.out.printf("\t\t\t\t\t\t\t\t\t\t\t\t TOTAL: %6s\n", calcularTotal());
         } catch (SQLException ex){
 //            ex.printStackTrace();
             System.err.println("Error al visualizar los datos");
@@ -55,7 +55,23 @@ public class Application {
             return "Error";
         }
     }
-    public void manipular(){
-
+    public boolean insertar(String descripcion, int cantidad, double precio){
+        try {
+            String sql = "insert into tabla (description, cantidad, precio) values (?,?,?);";
+            PreparedStatement ps = con.getCnn().prepareStatement(sql);
+            ps.setString(1, descripcion);
+            ps.setInt(2, cantidad);
+            ps.setDouble(3, precio);
+//            ResultSet rs = ps.executeQuery();
+            if (ps.executeUpdate()>0){
+                System.out.println("Insertado correctamente");
+                return true;
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            System.err.println("Error al insertar");
+            return false;
+        }
+        return false;
     }
 }
