@@ -12,6 +12,7 @@ public class Main {
         nombres.add("Jose");
         nombres.add("Marcos");
         nombres.add("Jesus");
+        System.out.println(nombres);
 
 
 
