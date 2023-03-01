@@ -1,4 +1,4 @@
-package facade.api;
+package facade.mitocode.facade.api;
 
 public class AvionAPI {
     public void buscarVuelos(String fechaIda, String fechaVuelta, String origen, String destino){

@@ -1,6 +1,6 @@
-package facade;
+package facade.mitocode.facade;
 
-import facade.facade.CheckFacade;
+import facade.mitocode.facade.CheckFacade;
 
 public class Main {
     public static void main(String[] args) {

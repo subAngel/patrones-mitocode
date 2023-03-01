@@ -1,6 +1,6 @@
-package prototype.model;
+package prototype.mitocode.model;
 
-import prototype.interfaz.ICuenta;
+import prototype.mitocode.interfaz.ICuenta;
 
 public class CuentaAHImplem implements ICuenta {
     private String tipo;

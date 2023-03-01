@@ -1,7 +1,7 @@
-package facade.facade;
+package facade.mitocode.facade;
 
-import facade.api.AvionAPI;
-import facade.api.HotelAPI;
+import facade.mitocode.facade.api.AvionAPI;
+import facade.mitocode.facade.api.HotelAPI;
 
 public class CheckFacade {
     private AvionAPI avionAPI;

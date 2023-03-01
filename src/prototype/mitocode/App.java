@@ -1,6 +1,6 @@
-package prototype;
+package prototype.mitocode;
 
-import prototype.model.CuentaAHImplem;
+import prototype.mitocode.model.CuentaAHImplem;
 
 public class App {
     public static void main(String[] args) {

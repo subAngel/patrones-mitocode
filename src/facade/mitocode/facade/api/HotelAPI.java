@@ -1,4 +1,4 @@
-package facade.api;
+package facade.mitocode.facade.api;
 
 public class HotelAPI {
     public void buscarHoteles(String fechaEntrada, String fechaSalida, String origen, String destino){
